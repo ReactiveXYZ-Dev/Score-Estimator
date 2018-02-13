@@ -1,0 +1,9 @@
+.large-pad:not(:first-child) {
+	margin-left: 15px;
+}
+.small-span {
+	font-size: 12px;
+}
+.gray {
+	background: #e5e5e5;
+}

@@ -68,7 +68,7 @@
 						</table>
 					</div>
 					<div class="form-row row">
-						<button type="button" class="btn btn-primary large-pad" data-toggle="tooltip" title="Based on scores you've locked and your goal, it fills in expected score for the rest of the assignments">Calculate</button>
+						<button type="button" class="btn btn-primary large-pad" data-toggle="tooltip" title="Based on scores you've locked and your goal, it fills in expected score for the rest of the assignments. Make sure your weights add up to 100." @click="calculateScores()">Calculate</button>
 						<button type="button" class="btn btn-secondary large-pad" @click="saveAssignments()">Save</button>
 						<button type="button" class="btn btn-success large-pad" @click="openRestoreModal()">Restore</button>
 					</div>
@@ -92,18 +92,18 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<div class="form-check" v-for="backup in backups">
+							<div class="form-check" v-for="(backup, idx) in backups">
 								<input class="form-check-input" type="radio" :value="backup.key" v-model="selectedBackup" checked>
 								<label class="form-check-label">
 									{{ backup.courseName }}
 								</label>
-								<a><i class="fa fa-trash"></i></a>
+								<a style="cursor: pointer;" @click="deleteBackup(backup, idx)"><i class="fa fa-trash"></i></a>
 							</div>
 							<h1 v-if="backups.length == 0">No backups...</h1>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary" v-if="backups.length != 0" @click="restoreAssignments()">Restore</button>
+							<button type="button" class="btn btn-primary" v-if="backups.length != 0" @click="restoreBackup()">Restore</button>
 						</div>
 					</div>
 				</div>

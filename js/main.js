@@ -82,12 +82,21 @@ new Vue({
 		},
 
 		/**
+		 * Open the restoraing modal
+		 * @return {Void}
+		 */
+		openRestoreModal() {
+			$('#restore-modal').modal('show');
+		},
+
+		/**
 		 * Restore assignments to UI
 		 * @return {Void}
 		 */
-		restoreAssignments(backup) {
+		restoreAssignments() {
 			if (this.selectedBackup) {
-				this.assignmentData = JSON.parse(localStorage.getItem(backup.key));
+				this.assignmentData = JSON.parse(localStorage.getItem(this.selectedBackup));
+				$('#restore-modal').modal('hide');
 			} else {
 				alert("Please. Select a backup!");
 			}

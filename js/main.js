@@ -91,8 +91,7 @@ new Vue({
 			// distribute the rest percentage to all unlocked score
 			for (var i = 0; i < this.assignmentData.length; ++i) {
 				if (!this.assignmentData[i].isLocked) {
-					var weight = parseFloat(this.assignmentData[i].weight)/100;
-					this.assignmentData[i].score = weight * restPercentage;
+					this.assignmentData[i].score = restPercentage;
 				}
 			}
 		},

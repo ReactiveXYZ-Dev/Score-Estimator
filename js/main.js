@@ -103,8 +103,8 @@ new Vue({
 		 */
 		saveAssignments() {
 			var courseName = prompt("Enter course name to save: ");
-			localStorage.setItem("COURSE_DATA_" + courseName, JSON.stringify(this.assignmentData));
 			if (courseName) {
+				localStorage.setItem("COURSE_DATA_" + courseName, JSON.stringify(this.assignmentData));
 				alert("Saved!");
 				// reload backups
 				this.backups = this._loadBackups();
